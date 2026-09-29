@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KOSLING – Jual Beli Barang Bekas Mahasiswa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--t:#14A899;--t-d:#0B7A6F;--t-dd:#064E47;--t-l:#E3F7F4;--t-xl:#F2FBF9;--ink:#0E2B28;--mut:#527370;--line:#D3ECE8;--w:#fff;--warn:#F59E0B;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:var(--w);line-height:1.6}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--t);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 22px;font-weight:600;background:var(--t);color:#fff;transition:background .15s}
+.btn:hover{background:var(--t-d)}
+.btn.o{background:#fff;color:var(--t-d);border:1.5px solid var(--t)}
+.btn.o:hover{background:var(--t-l)}
+.btn.sm{padding:8px 16px;font-size:.9rem}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.35rem;color:var(--t-d)}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--t);display:grid;place-items:center;color:#fff;font-style:normal;font-size:1.1rem}
+nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-weight:500;color:var(--mut)}
+nav a:hover{color:var(--t-d)}
+.cartb{position:relative}
+.cartb b{position:absolute;top:-6px;right:-6px;background:var(--warn);color:#fff;font-size:.72rem;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px}
+@media(max-width:760px){nav ul{display:none}}
+.hero{background:linear-gradient(180deg,var(--t-xl),#fff);padding:64px 0 48px}
+.hg{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4rem);font-weight:800;color:var(--t-dd)}
+.hero p.l{font-size:1.15rem;color:var(--mut);max-width:34em;margin:18px 0 26px}
+.sb{display:flex;flex-wrap:wrap;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:8px;box-shadow:0 10px 30px rgba(20,168,153,.12)}
+.sb input,.sb select{border:0;background:transparent;padding:10px 12px;min-width:0;flex:1 1 150px}
+.sb select{flex:0 1 190px;border-left:1px solid var(--line)}
+.sb input:focus-visible,.sb select:focus-visible{outline-offset:-2px;border-radius:12px}
+.stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
+.stats div{font-size:.9rem;color:var(--mut)}.stats b{display:block;font-family:'Bricolage Grotesque';font-size:1.6rem;color:var(--t-d)}
+.pill{background:linear-gradient(160deg,var(--t),var(--t-d));border-radius:32px;padding:26px;color:#fff;position:relative;box-shadow:0 24px 50px rgba(11,122,111,.3)}
+.pill h3{font-size:1.25rem;margin-bottom:4px}
+.pill small{opacity:.85}
+.mini{display:flex;align-items:center;gap:12px;background:#fff;color:var(--ink);border-radius:16px;padding:12px;margin-top:12px}
+.mini span.e{font-size:1.8rem;width:48px;height:48px;background:var(--t-l);border-radius:12px;display:grid;place-items:center}
+.mini div{flex:1;font-size:.92rem;line-height:1.3}.mini b{color:var(--t-d)}
+@media(max-width:820px){.hg{grid-template-columns:1fr}}
+section{padding:72px 0}
+.sh{max-width:640px;margin-bottom:32px}
+.sh h2{font-size:clamp(1.8rem,3.6vw,2.6rem);color:var(--t-dd)}
+.sh p{color:var(--mut);margin:10px 0 0}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:22px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 16px;font-weight:500;color:var(--mut)}
+.chip[aria-pressed=true]{background:var(--t);border-color:var(--t);color:#fff}
+.rng{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:.92rem;color:var(--mut)}
+.rng input{accent-color:var(--t)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{border:1.5px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--t);transform:translateY(-2px)}
+.img{height:150px;overflow:hidden;background:var(--t-l);display:grid;place-items:center;font-size:3.6rem;position:relative}
+.img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bimg{height:140px;border-radius:16px;overflow:hidden;background:var(--t-l);position:relative;display:grid;place-items:center;font-size:2.6rem}
+.bimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tag{z-index:1;position:absolute;top:10px;left:10px;background:var(--warn);color:#fff;font-size:.75rem;font-weight:600;border-radius:999px;padding:2px 10px}
+.cb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.cb h3{font-size:1.05rem;font-family:Figtree;font-weight:600;letter-spacing:0}
+.pr{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.25rem;color:var(--t-d)}
+.meta{font-size:.85rem;color:var(--mut)}
+.ver{color:var(--t-d);font-weight:600}
+.cb .btn{margin-top:auto;justify-content:center}
+.empty{grid-column:1/-1;text-align:center;padding:40px;border:1.5px dashed var(--line);border-radius:20px;color:var(--mut)}
+.alt{background:var(--t-xl)}
+.bund{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.bund .card{padding:22px;gap:10px;border-radius:24px}
+.bund ul{margin:0;padding-left:0;list-style:none;color:var(--mut);font-size:.95rem}
+.bund li{padding:5px 0;border-bottom:1px solid var(--line)}
+.old{text-decoration:line-through;color:var(--mut);font-size:.9rem;margin-left:6px;font-weight:400}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 32px}
+.feat div{border-top:3px solid var(--t);padding-top:14px}
+.feat h3{font-size:1.15rem;margin-bottom:6px;color:var(--t-dd)}
+.feat p{margin:0;color:var(--mut);font-size:.96rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;counter-reset:s}
+.steps div{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:22px;counter-increment:s}
+.steps div:before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--t);color:#fff;font-weight:700;margin-bottom:12px}
+.steps h3{font-size:1.1rem;margin-bottom:4px}.steps p{margin:0;color:var(--mut);font-size:.94rem}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.rev div{background:var(--t-dd);color:#fff;border-radius:24px;padding:24px}
+.rev b{display:block;font-family:'Bricolage Grotesque';font-size:2rem;color:#7FF0E1}
+.rev p{margin:6px 0 0;opacity:.85;font-size:.95rem}
+.cta{background:linear-gradient(135deg,var(--t),var(--t-d));color:#fff;border-radius:32px;padding:48px 32px;text-align:center}
+.cta h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}.cta p{opacity:.9;margin:10px auto 24px;max-width:34em}
+.cta .btn{background:#fff;color:var(--t-d)}
+footer{padding:32px 0;color:var(--mut);font-size:.9rem;border-top:1px solid var(--line)}
+.fr{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ov{position:fixed;inset:0;background:rgba(6,78,71,.45);z-index:40;display:none;justify-content:flex-end}
+.ov.on{display:flex}
+.ov.mid{justify-content:center;align-items:center;padding:16px}
+.pan{background:#fff;width:min(420px,100%);height:100%;padding:24px;overflow:auto;display:flex;flex-direction:column;gap:14px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+.ov.mid .pan{height:auto;max-height:100%;border-radius:24px}
+.pan h3{font-size:1.4rem;color:var(--t-dd)}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.95rem}
+.row button{border:0;background:none;color:#b42318;font-size:.85rem}
+label{display:flex;flex-direction:column;gap:4px;font-weight:500;font-size:.92rem}
+label input,label select{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.chk{flex-direction:row;align-items:center;gap:10px}
+.tot{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:6px}
+.tot .row:last-child{font-weight:700;font-size:1.1rem;color:var(--t-dd)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--t-dd);color:#fff;padding:12px 22px;border-radius:999px;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw}
+#toast.on{opacity:1;transform:translateX(-50%)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.hero{position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-140px;top:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,#BDEFE8,transparent 70%)}
+.hg{position:relative}
+header{box-shadow:0 1px 12px rgba(11,122,111,.06)}
+.card{box-shadow:0 2px 8px rgba(11,122,111,.06)}
+.card:hover{box-shadow:0 16px 32px rgba(11,122,111,.16)}
+.img{cursor:pointer;background:linear-gradient(110deg,var(--t-l) 30%,#F6FDFC 50%,var(--t-l) 70%);background-size:200% 100%;animation:sh 1.4s linear infinite}
+.img img,.bimg img{transition:transform .4s}
+.card:hover .img img{transform:scale(1.06)}
+@keyframes sh{to{background-position:-200% 0}}
+.cb h3 a:hover{color:var(--t-d)}
+.tb{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.tb input,.tb select{border:1.5px solid var(--line);border-radius:14px;padding:11px 14px;background:#fff;flex:1 1 180px;min-width:0}
+.tb select{flex:0 1 210px}
+.tb .meta{align-self:center;margin-left:auto}
+.mb{display:none}
+@media(max-width:760px){
+ .mb{display:inline-flex}
+ nav ul.open{display:flex;flex-direction:column;gap:14px;position:absolute;top:64px;left:0;right:0;background:#fff;padding:18px 20px;border-bottom:1px solid var(--line);box-shadow:0 12px 20px rgba(11,122,111,.1)}
+ section{padding:52px 0}.hero{padding:40px 0 32px}
+ .rng{margin-left:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){.img{animation:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a href="#top" class="logo"><i>K</i>KOSLING</a>
+<nav aria-label="Menu utama"><ul><li><a href="#belanja">Belanja</a></li><li><a href="#bundle">Kos Bundle</a></li><li><a href="#fitur">Fitur</a></li><li><a href="#cara">Cara kerja</a></li><li><a href="#bisnis">Model bisnis</a></li></ul></nav>
+<div style="display:flex;gap:8px"><button class="btn o sm mb" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">Menu</button><button class="btn o sm" onclick="openSell()">Jual barang</button><button class="btn sm cartb" onclick="openCart()" aria-label="Buka keranjang">Keranjang<b id="cc">0</b></button></div>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap hg">
+<div>
+<h1>Barang kos lama, jadi barang kos baru.</h1>
+<p class="l">KOSLING mempertemukan mahasiswa yang mau pindah atau pulang dengan mahasiswa yang butuh perlengkapan terjangkau, dekat kampus dan tempat tinggal.</p>
+<form class="sb" id="hs" onsubmit="heroSearch(event)">
+<input id="hq" type="search" placeholder="Cari kasur, kipas, rak buku…" aria-label="Cari barang">
+<select id="hc" aria-label="Pilih kampus"></select>
+<button class="btn">Cari barang</button>
+</form>
+<div class="stats"><div><b>Lokasi</b>cari barang terdekat</div><div><b>Verifikasi</b>pengguna terpercaya</div><div><b>Pickup</b>ojek online &amp; logistik</div></div>
+</div>
+<aside class="pill" aria-label="Contoh Jual Cepat">
+<h3>Jual Cepat Sebelum Pulang</h3><small>Barang yang harus terjual sebelum tanggal kepulangan penjual</small>
+<div class="mini"><span class="e">🛏️</span><div><b>Kasur busa 90×200</b><br>Sisa 3 hari · 0,8 km</div></div>
+<div class="mini"><span class="e">🌀</span><div><b>Kipas angin berdiri</b><br>Sisa 5 hari · 1,2 km</div></div>
+<div class="mini"><span class="e">📚</span><div><b>Rak buku 4 susun</b><br>Sisa 6 hari · 2,1 km</div></div>
+</aside>
+</div></div>
+
+<section id="belanja"><div class="wrap">
+<div class="sh"><h2>Temukan barang di sekitar kampusmu</h2><p>Filter berdasarkan kampus, kategori, dan jarak. Semua penjual sudah terverifikasi.</p></div>
+<div class="tb">
+<input id="mq" type="search" placeholder="Cari nama barang…" aria-label="Cari nama barang">
+<select id="mc" aria-label="Filter kampus"></select>
+<select id="so" aria-label="Urutkan"><option value="rec">Rekomendasi</option><option value="near">Terdekat</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option><option value="rate">Rating tertinggi</option></select>
+<span class="meta" id="cnt"></span>
+</div>
+<div class="tools">
+<div class="chips" id="chips" role="group" aria-label="Kategori"></div>
+<label class="rng" style="flex-direction:row;align-items:center">Maks. <input type="range" id="rad" min="1" max="10" value="10" aria-label="Jarak maksimal"> <span id="rv">10 km</span></label>
+</div>
+<div class="grid" id="grid" aria-live="polite"></div>
+</div></section>
+
+<section id="bundle" class="alt"><div class="wrap">
+<div class="sh"><h2>Kos Bundle: isi kamar kos sekali beli</h2><p>Paket perlengkapan dari satu penjual, lebih hemat dan diantar sekaligus.</p></div>
+<div class="bund" id="bund"></div>
+</div></section>
+
+<section id="fitur"><div class="wrap">
+<div class="sh"><h2>Dibuat untuk cara mahasiswa berpindah</h2></div>
+<div class="feat">
+<div><h3>Pencarian berbasis lokasi</h3><p>Lihat barang terdekat dari kampus atau kosmu, jadi ambil dan antar lebih cepat.</p></div>
+<div><h3>Verifikasi pengguna</h3><p>Akun dicek lewat identitas mahasiswa, sehingga transaksi terjadi antarmahasiswa yang nyata.</p></div>
+<div><h3>Rating dan ulasan</h3><p>Penilaian setelah transaksi membantu pembeli memilih penjual yang dapat dipercaya.</p></div>
+<div><h3>Jual Cepat Sebelum Pulang</h3><p>Atur tenggat kepulanganmu. Barangmu tampil lebih atas sampai terjual.</p></div>
+<div><h3>Pickup dan pengiriman</h3><p>Pesan penjemputan lewat ojek online atau mitra logistik langsung dari aplikasi.</p></div>
+<div><h3>Ekonomi sirkular</h3><p>Setiap barang yang berpindah tangan memperpanjang masa pakainya dan mengurangi sampah.</p></div>
+</div></div></section>
+
+<section id="cara" class="alt"><div class="wrap">
+<div class="sh"><h2>Cara kerja KOSLING</h2></div>
+<div class="steps">
+<div><h3>Daftar dan verifikasi</h3><p>Masuk dengan email kampus atau kartu mahasiswa.</p></div>
+<div><h3>Pasang atau cari barang</h3><p>Unggah foto dan harga, atau cari di sekitar lokasimu.</p></div>
+<div><h3>Sepakati dan bayar</h3><p>Chat penjual, lalu pilih ambil sendiri atau pickup.</p></div>
+<div><h3>Terima dan beri ulasan</h3><p>Barang sampai, beri rating agar komunitas makin aman.</p></div>
+</div></div></section>
+
+<section id="bisnis"><div class="wrap">
+<div class="sh"><h2>Model bisnis yang berkelanjutan</h2><p>KOSLING dapat diterapkan di berbagai kawasan pendidikan lewat kemitraan dengan kampus, komunitas, pemilik kos, dan mitra logistik.</p></div>
+<div class="rev">
+<div><b>Biaya layanan</b><p>Biaya layanan yang dikenakan pada setiap transaksi yang berhasil.</p></div>
+<div><b>Featured listing</b><p>Penjual membayar agar barangnya tampil lebih menonjol di hasil pencarian.</p></div>
+<div><b>Pickup &amp; kirim</b><p>Biaya antar-jemput barang lewat kolaborasi dengan ojek online dan mitra logistik.</p></div>
+</div>
+<div class="cta" style="margin-top:56px"><h2>Mau pindah kos bulan ini?</h2><p>Pasang barangmu sekarang dan biarkan mahasiswa di dekatmu yang mengambilnya.</p><button class="btn" onclick="openSell()">Jual barang sekarang</button></div>
+</div></section>
+</main>
+
+<footer><div class="wrap fr"><span><b>KOSLING</b> · Jual beli barang bekas mahasiswa, lebih mudah, lebih bermakna.</span><span>Koslingers Team · Semarang 2026</span></div></footer>
+
+<div class="ov" id="cov" onclick="if(event.target===this)closeAll()"><div class="pan" role="dialog" aria-label="Keranjang">
+<h3>Keranjang</h3><div id="ci"></div><div id="ct"></div>
+<label class="chk"><input type="checkbox" id="pk" onchange="renderCart()"> Pakai pickup &amp; pengiriman (+<span id="pkp"></span>)</label>
+<button class="btn" onclick="checkout()" style="justify-content:center">Bayar sekarang</button>
+<button class="btn o" onclick="closeAll()" style="justify-content:center">Lanjut belanja</button>
+</div></div>
+
+<div class="ov mid" id="sov" onclick="if(event.target===this)closeAll()"><div class="pan" role="dialog" aria-label="Jual barang">
+<h3>Jual barang</h3>
+<form id="sf" style="display:grid;gap:12px" onsubmit="sell(event)">
+<label>Nama barang<input id="sn" required maxlength="40" placeholder="Contoh: Meja belajar lipat"></label>
+<label>Harga (Rp)<input id="sp" type="number" min="1000" step="1000" required placeholder="75000"></label>
+<label>Kategori<select id="sk"></select></label>
+<label>Kampus terdekat<select id="sc"></select></label>
+<label class="chk"><input type="checkbox" id="sq"> Aktifkan Jual Cepat Sebelum Pulang</label>
+<label class="chk"><input type="checkbox" id="sf2"> Featured listing: tampil lebih menonjol (+<span id="fdp"></span>)</label>
+<button class="btn" style="justify-content:center">Pasang iklan</button>
+<button class="btn o" type="button" onclick="closeAll()" style="justify-content:center">Batal</button>
+</form></div></div>
+<div class="ov mid" id="dov" onclick="if(event.target===this)closeAll()"><div class="pan" role="dialog" aria-label="Detail barang" id="di"></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+const CAMPUS=['POLINES Tembalang','UNDIP Tembalang','UNNES Sekaran','UDINUS Semarang'];
+const CATS=['Semua','Furnitur','Elektronik','Dapur','Kamar'];
+let items=[
+{id:1,w:'mattress,bedroom',n:'Kasur busa 90×200',c:'Kamar',p:250000,k:'POLINES Tembalang',d:.8,s:'Rani',r:4.9,e:'🛏️',q:1},
+{id:2,w:'electric,fan',n:'Kipas angin berdiri',c:'Elektronik',p:85000,k:'POLINES Tembalang',d:1.2,s:'Dimas',r:4.7,e:'🌀',q:1},
+{id:3,w:'bookshelf',n:'Rak buku 4 susun',c:'Furnitur',p:120000,k:'UNDIP Tembalang',d:2.1,s:'Alya',r:4.8,e:'📚',q:1},
+{id:4,w:'rice,cooker',n:'Rice cooker 1,2 L',c:'Dapur',p:90000,k:'UNNES Sekaran',d:.5,s:'Bagas',r:4.6,e:'🍚',q:0},
+{id:5,f:1,w:'study,desk',n:'Meja belajar lipat',c:'Furnitur',p:75000,k:'UNDIP Tembalang',d:1.6,s:'Nadia',r:5,e:'🪑',q:0},
+{id:6,w:'desk,lamp',n:'Lampu belajar LED',c:'Elektronik',p:35000,k:'UDINUS Semarang',d:3.4,s:'Fikri',r:4.5,e:'💡',q:0},
+{id:7,f:1,w:'wardrobe,closet',n:'Lemari plastik 3 pintu',c:'Kamar',p:140000,k:'POLINES Tembalang',d:4.2,s:'Sinta',r:4.8,e:'🗄️',q:1},
+{id:8,w:'electric,stove',n:'Kompor listrik mini',c:'Dapur',p:110000,k:'UNNES Sekaran',d:2.8,s:'Yoga',r:4.4,e:'🍳',q:0}];
+const BUNDLES=[
+{id:'b1',w:'bedroom,interior',n:'Paket Kamar Baru',p:390000,o:475000,l:['Kasur busa 90×200','Bantal &amp; guling','Lemari plastik'],e:'🛏️'},
+{id:'b2',w:'study,desk',n:'Paket Belajar',p:180000,o:230000,l:['Meja belajar lipat','Lampu belajar LED','Rak buku 4 susun'],e:'📚'},
+{id:'b3',w:'kitchen,cookware',n:'Paket Dapur Kos',p:170000,o:200000,l:['Rice cooker 1,2 L','Kompor listrik mini','Set piring &amp; gelas'],e:'🍳'}];
+/* Tarif contoh, sesuaikan dengan keputusan tim */
+const FEE=0.05,PICKUP=10000,FEATURED=10000;
+const SORT={rec:(a,b)=>(b.f||0)-(a.f||0)||b.q-a.q||a.d-b.d,near:(a,b)=>a.d-b.d,low:(a,b)=>a.p-b.p,high:(a,b)=>b.p-a.p,rate:(a,b)=>b.r-a.r};
+let cat='Semua',camp='Semua kampus',cart=[],q='';
+const $=i=>document.getElementById(i);
+const rp=n=>'Rp'+Number(n).toLocaleString('id-ID');
+const ph=(w,id)=>`https://loremflickr.com/480/320/${encodeURIComponent(w)}?lock=${String(id).replace(/\D/g,'').slice(-6)||1}`;
+const pic=(w,id,alt)=>`<img src="${ph(w,id)}" alt="${esc(alt)}" loading="lazy" onerror="this.remove()">`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function opts(el,arr){el.innerHTML=arr.map(a=>`<option>${esc(a)}</option>`).join('')}
+opts($('hc'),['Semua kampus',...CAMPUS]);opts($('sc'),CAMPUS);opts($('mc'),['Semua kampus',...CAMPUS]);opts($('sk'),CATS.slice(1));
+$('chips').innerHTML=CATS.map(c=>`<button class="chip" aria-pressed="${c==='Semua'}" data-c="${c}">${c}</button>`).join('');
+$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));render()};
+$('rad').oninput=()=>{$('rv').textContent=$('rad').value+' km';render()};
+function heroSearch(e){e.preventDefault();q=$('hq').value.trim().toLowerCase();camp=$('hc').value;$('mq').value=$('hq').value;$('mc').value=camp;render();$('belanja').scrollIntoView()}
+function render(){
+ const r=+$('rad').value;
+ const list=items.filter(i=>(cat==='Semua'||i.c===cat)&&(camp==='Semua kampus'||i.k===camp)&&i.d<=r&&i.n.toLowerCase().includes(q))
+  .sort(SORT[$('so').value]);
+ $('grid').innerHTML=list.length?list.map(i=>`<article class="card"><div class="img" onclick="detail(${i.id})">${i.f?'<span class="tag" style="background:var(--t-dd)">Featured</span>':i.q?'<span class="tag">Jual Cepat</span>':''}${i.e}${pic(i.w,i.id,i.n)}</div><div class="cb"><h3><a href="#" onclick="detail(${i.id});return false">${esc(i.n)}</a></h3><div class="pr">${rp(i.p)}</div><div class="meta">${esc(i.k)} · ${String(i.d).replace('.',',')} km</div><div class="meta"><span class="ver">✓ Terverifikasi</span> · ${esc(i.s)} · ★ ${String(i.r).replace('.',',')}</div><button class="btn sm" onclick="add('i',${i.id})">Tambah ke keranjang</button></div></article>`).join(''):'<div class="empty">Belum ada barang yang cocok. Coba perbesar jarak atau ganti kategori.</div>';
+ $('cnt').textContent=list.length+' barang ditemukan';
+}
+$('bund').innerHTML=BUNDLES.map(b=>`<article class="card"><div class="bimg">${b.e}${pic(b.w,b.id,b.n)}</div><h3>${b.n}</h3><ul>${b.l.map(x=>`<li>${x}</li>`).join('')}</ul><div class="pr">${rp(b.p)}<span class="old">${rp(b.o)}</span></div><button class="btn sm" onclick="add('b','${b.id}')">Ambil paket</button></article>`).join('');
+function add(t,id){
+ const o=t==='i'?items.find(x=>x.id===id):BUNDLES.find(x=>x.id===id);
+ if(cart.some(c=>c.key===t+id)){toast('Sudah ada di keranjang');return}
+ cart.push({key:t+id,n:o.n,p:o.p});$('cc').textContent=cart.length;toast('Ditambahkan ke keranjang');
+}
+function renderCart(){
+ $('ci').innerHTML=cart.length?cart.map((c,i)=>`<div class="row"><span>${esc(c.n)}<br><b>${rp(c.p)}</b></span><button onclick="del(${i})">Hapus</button></div>`).join(''):'<p class="meta">Keranjang masih kosong. Pilih barang dulu.</p>';
+ const sub=cart.reduce((a,c)=>a+c.p,0),fee=Math.round(sub*FEE),pk=$('pk').checked&&cart.length?PICKUP:0;
+ $('ct').innerHTML=cart.length?`<div class="tot"><div class="row"><span>Subtotal</span><span>${rp(sub)}</span></div><div class="row"><span>Biaya layanan ${FEE*100}%</span><span>${rp(fee)}</span></div><div class="row"><span>Pickup &amp; kirim</span><span>${rp(pk)}</span></div><div class="row"><span>Total</span><span>${rp(sub+fee+pk)}</span></div></div>`:'';
+}
+function del(i){cart.splice(i,1);$('cc').textContent=cart.length;renderCart()}
+function checkout(){if(!cart.length){toast('Keranjang masih kosong');return}cart=[];$('cc').textContent=0;renderCart();closeAll();toast('Pesanan dibuat! Penjual akan segera menghubungimu.')}
+function openCart(){renderCart();$('cov').classList.add('on')}
+function openSell(){$('sov').classList.add('on');$('sn').focus()}
+function closeAll(){document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'))}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+function sell(e){e.preventDefault();
+ items.unshift({id:Date.now(),w:'used,furniture',n:$('sn').value.trim(),c:$('sk').value,p:+$('sp').value,k:$('sc').value,d:1,s:'Kamu',r:5,e:'📦',q:$('sq').checked?1:0,f:$('sf2').checked?1:0});
+ e.target.reset();closeAll();cat='Semua';camp='Semua kampus';q='';$('mc').value=camp;$('mq').value='';
+ document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.c==='Semua'));
+ render();$('belanja').scrollIntoView();toast(items[0].f?'Iklanmu tayang sebagai featured listing ('+rp(FEATURED)+')':'Iklanmu sudah tayang');
+}
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
+$('mq').oninput=()=>{q=$('mq').value.trim().toLowerCase();render()};
+$('mc').onchange=()=>{camp=$('mc').value;render()};
+$('so').onchange=render;
+document.querySelector('nav ul').onclick=e=>{if(e.target.tagName==='A')e.currentTarget.classList.remove('open')};
+function detail(id){const i=items.find(x=>x.id===id);if(!i)return;
+ $('di').innerHTML=`<div class="bimg" style="height:200px">${i.e}${pic(i.w,i.id,i.n)}</div><h3>${esc(i.n)}</h3><div class="pr" style="font-size:1.6rem">${rp(i.p)}</div><div class="meta">${esc(i.k)} · ${String(i.d).replace('.',',')} km dari kampus</div><div class="meta"><span class="ver">✓ Terverifikasi</span> · ${esc(i.s)} · ★ ${String(i.r).replace('.',',')}</div><p class="meta" style="margin:0">Kategori ${esc(i.c)}. Barang bekas layak pakai. ${i.q?'Penjual segera pulang, jadi barang perlu terjual cepat.':'Bisa diambil sendiri atau lewat pickup.'}</p><button class="btn" style="justify-content:center" onclick="add('i',${i.id});closeAll()">Tambah ke keranjang</button><button class="btn o" style="justify-content:center" onclick="toast('Chat dengan ${esc(i.s)} dibuka (demo)')">Chat penjual</button><button class="btn o" onclick="closeAll()" style="justify-content:center">Tutup</button>`;
+ $('dov').classList.add('on')}
+$('pkp').textContent=rp(PICKUP);$('fdp').textContent=rp(FEATURED);
+render();
+</script>
+</body>
+</html>
