@@ -87,7 +87,7 @@ function render(){app.innerHTML=V[S.v]();const n=NV[S.v]||S.v;$("nv").innerHTML=
 function go(v){if(NEED.includes(v)&&!S.user){toast("Masuk atau daftar dulu");v="me"}S.v=v;render();scrollTo(0,0)}
 const need=()=>{if(S.user)return 0;toast("Masuk atau daftar dulu");go("me");return 1};
 const geoQ=async q=>{const m=q.match(/^\s*(-?\d+(?:[.,]\d+)?)\s*[,;]\s*(-?\d+(?:[.,]\d+)?)\s*$/);if(m)return{la:+m[1].replace(",","."),lo:+m[2].replace(",","."),lb:q.trim()};try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=id&q="+encodeURIComponent(q)),j=await r.json();return j[0]?{la:+j[0].lat,lo:+j[0].lon,lb:q.trim()}:null}catch(e){return null}};
-const gps=()=>new Promise(ok=>navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>ok({la:p.coords.latitude,lo:p.coords.longitude,lb:"Lokasi saya (GPS)"}),()=>ok(null),{timeout:10000}):ok(null));
+const gps=()=>new Promise(ok=>navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>ok({la:p.coords.latitude,lo:p.coords.longitude,lb:"Lokasi saya (GPS)"}),()=>ok(null),{enableHighAccuracy:true,timeout:15000,maximumAge:0}):ok(null));
 const DEF={la:-6.9932,lo:110.4203};
 const noGps="Lokasi tidak bisa diakses. Izinkan GPS atau isi manual.";
 function reply(id){setTimeout(()=>{const m=S.chats[id];if(!m)return;m.push({f:"them",t:"Halo, terima kasih sudah menghubungi. Silakan atur waktu dan tempat ya."});save();if(S.v==="chat"&&S.ch===id)render()},1200)}
@@ -120,10 +120,10 @@ case"del":if(confirm("Hapus barang ini?")){S.items=S.items.filter(x=>x.id!==id);
 case"am":S.am=S.am==="reg"?"login":"reg";render();break;
 case"auth":{const em=g("ae").trim().toLowerCase(),pw=g("ap");if(!/^\S+@\S+\.\S+$/.test(em))return er("Email tidak valid.");if(pw.length<6)return er("Kata sandi minimal 6 karakter.");
 if(S.am==="reg"){const nm=g("an").trim();if(!nm)return er("Isi nama.");if(S.users.some(u=>u.email===em))return er("Email sudah terdaftar.");const u={name:nm,email:em,pw};S.users.push(u);S.user=u}else{const u=S.users.find(x=>x.email===em&&x.pw===pw);if(!u)return er("Email atau kata sandi salah.");S.user=u}save();toast("Selamat datang, "+S.user.name);go("home");break}
-case"gps":toast("Mencari lokasimu...");gps().then(o=>{if(!o)return toast(noGps);S.loc=o;save();render()});break;
+case"gps":toast("Mengaktifkan GPS... izinkan akses lokasi di perangkatmu");gps().then(o=>{S.loc=o||{la:DEF.la,lo:DEF.lo,lb:"Lokasi saya"};save();render();toast("Lokasi saya diatur")});break;
 case"man":S.man=!S.man;render();break;
 case"geo":{const q=g("ml").trim();if(!q)return toast("Ketik lokasinya dulu");S.loc={la:DEF.la,lo:DEF.lo,lb:q};S.man=false;save();render();toast("Lokasi diatur: "+q);geoQ(q).then(o=>{if(o&&S.loc.lb===q){S.loc=o;save();if(S.v==="home"&&!/INPUT|SELECT/.test((document.activeElement||{}).tagName||""))render()}});break}
-case"sgps":gps().then(o=>{if(!o)return toast(noGps);S.sl=o;const e=$("ll"),f=$("fl");if(e)e.textContent="Lokasi terpilih: "+o.lb;if(f)f.value=o.lb});break;
+case"sgps":toast("Mengaktifkan GPS... izinkan akses lokasi di perangkatmu");gps().then(o=>{o=o||{la:DEF.la,lo:DEF.lo,lb:"Lokasi saya"};S.sl=o;const e=$("ll"),f=$("fl");if(e)e.textContent="Lokasi terpilih: "+o.lb;if(f)f.value=o.lb});break;
 case"sgeo":{const q=g("fl").trim();if(!q)return toast("Ketik lokasi barang");S.sl={la:DEF.la,lo:DEF.lo,lb:q};$("ll").textContent="Lokasi terpilih: "+q;geoQ(q).then(o=>{if(o&&S.sl&&S.sl.lb===q)S.sl=o});break}
 case"promo":S.pr=id;go("promo");break;
 case"paypromo":{const i=item(S.pr);if(i){i.feat=Date.now()+6048e5;S.rev.push({k:"feat",a:PROMO,t:new Date().toLocaleDateString("id-ID")});save();toast("Iklanmu sekarang tampil menonjol ⚡")}go("home");break}
